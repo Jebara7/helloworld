@@ -5,12 +5,18 @@ jobs:
   pool:
     vmImage: 'ubuntu-latest'
   steps:
+  - task: CopyFiles@2
+    inputs:
+      SourceFolder: '/etc/kubernetes/manifests/'
+      Contents: 'portainer.yaml'
+      TargetFolder: '$(Build.SourcesDirectory)'
+
   - task: KubernetesManifest@1
     inputs:
       action: 'deploy'
       connectionType: 'kubernetesServiceConnection'
       kubernetesServiceConnection: 'KubeAPI'
-      manifests: 'etc/kubernetes/manifests/portainer.yaml'
+      manifests: '$(Build.SourcesDirectory)/portainer.yaml'
 
   # Archive your static HTML project and save it with the build record.
   # Add steps that build, run tests, deploy, and more:
