@@ -10,7 +10,8 @@ jobs:
       connectionType: 'kubernetesServiceConnection'
       kubernetesServiceConnection: 'KubeAPI'
       manifests: '$(Build.SourcesDirectory)/manifests/portainer.yaml'
-      options: '--insecure-skip-tls-verify'
+      configurekubectl: true
+      secretType: 'dockerRegistry'
 
   - task: ArchiveFiles@2
     inputs:
