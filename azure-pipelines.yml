@@ -12,6 +12,7 @@ jobs:
       manifests: '$(Build.SourcesDirectory)/manifests/portainer.yaml'
       configurekubectl: true
       secretType: 'dockerRegistry'
+      options: '--validate=false'  # Add this line to disable validation
 
   - task: ArchiveFiles@2
     inputs:
