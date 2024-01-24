@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: faroapplication-deployment
+  name: helloworld-deployment
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: faroapplication
+      app: helloworld
   template:
     metadata:
       labels:
-        app: faroapplication
+        app: helloworld
     spec:
       containers:
-      - name: faroapplication
-        image: farotestregistry.azurecr.io/jebara7/helloworld:#{Build.BuildId}#
+      - name: helloworld
+        image: farotestregistry.azurecr.io/jebara7/helloworld
         ports:
         - containerPort: 5000
 # service type loadbalancer       
@@ -22,10 +22,10 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: faroapplication-svc
+  name: helloworld-svc
 spec:
   selector:
-    app: faroapplication
+    app: helloworld
   ports:
     - protocol: TCP
       port: 5000
