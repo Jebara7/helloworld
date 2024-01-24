@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: helloworld
-        image: farotestregistry.azurecr.io/jebara7/helloworld:latest
+        image: farotestregistry.azurecr.io/jebara7/helloworld
         ports:
         - containerPort: 5000
 # service type loadbalancer       
